@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        .oe_span12 {
+            max-width: 960px;
+            margin: 0 auto;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #333;
+        }
+        h2 {
+            color: #2E86AB;
+            font-size: 32px;
+            margin-top: 40px;
+            border-bottom: 2px solid #06A77D;
+            padding-bottom: 10px;
+        }
+        h3 {
+            color: #06A77D;
+            font-size: 24px;
+            margin-top: 30px;
+        }
+        .alert {
+            padding: 15px;
+            margin: 20px 0;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        .alert-info {
+            background-color: #E3F2FD;
+            border-color: #2E86AB;
+            color: #1565C0;
+        }
+        .alert-success {
+            background-color: #E8F5E9;
+            border-color: #06A77D;
+            color: #2E7D32;
+        }
+        ul {
+            line-height: 1.8;
+        }
+        .feature-box {
+            background: #F5F5F5;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #2E86AB;
+        }
+        code {
+            background: #F0F0F0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            background: #2E86AB;
+            color: white;
+            border-radius: 3px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <section class="oe_container">
+        <div class="oe_row oe_spaced">
+            <div class="oe_span12">
+                <h2 class="oe_slogan">TCMB Currency Rates</h2>
+                <h3 class="oe_slogan">Official Turkish Central Bank Exchange Rate Integration</h3>
+                
+                <div class="alert alert-info">
+                    <strong>🏦 Direct TCMB Connection</strong><br/>
+                    Automatically fetch official exchange rates from Turkey's Central Bank (TCMB/CBRT) 
+                    and sync them to your Odoo currencies. No manual data entry, no third-party APIs.
+                </div>
+
+                <h2>✨ Key Features</h2>
+                
+                <div class="feature-box">
+                    <h3>📅 Daily Automatic Updates</h3>
+                    <p>Scheduled action runs daily at 15:15 (TCMB publishing time) to fetch the latest rates. 
+                    Set it and forget it – your currency rates stay current automatically.</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>📊 Historical Data Import</h3>
+                    <p>Import exchange rates from <strong>16 April 1996 onwards</strong>. Perfect for:</p>
+                    <ul>
+                        <li>Financial reporting and analysis</li>
+                        <li>Historical invoice recalculation</li>
+                        <li>Compliance with tax regulations</li>
+                        <li>Multi-year financial statements</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <h3>🎯 Per-Currency Control</h3>
+                    <p>Enable <strong>TCMB Auto</strong> toggle for each currency individually. 
+                    Only selected currencies sync from TCMB – keep full control over your exchange rates.</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>📝 Complete Audit Trail</h3>
+                    <p><strong>Run History</strong> logs every update (scheduled and manual) with detailed chatter messages:</p>
+                    <ul>
+                        <li>Success/Skipped/Error status</li>
+                        <li>Rates created and updated counts</li>
+                        <li>TCMB rate date and timestamps</li>
+                        <li>Detailed error messages for troubleshooting</li>
+                    </ul>
+                </div>
+
+                <h2>⚙️ Configuration Options</h2>
+
+                <p><span class="badge">Rate Type</span> Choose which TCMB rate to use:</p>
+                <ul>
+                    <li><strong>Forex Buying</strong> – Bank buying rate for foreign exchange</li>
+                    <li><strong>Forex Selling</strong> (default) – Bank selling rate</li>
+                    <li><strong>Banknote Buying</strong> – Physical cash buying rate</li>
+                    <li><strong>Banknote Selling</strong> – Physical cash selling rate</li>
+                </ul>
+
+                <p><span class="badge">Retry Logic</span> Configurable retries on network failures:</p>
+                <ul>
+                    <li>Retry count (default: 3 attempts)</li>
+                    <li>Retry delay (default: 5 minutes between attempts)</li>
+                </ul>
+
+                <p><span class="badge">Holiday Skip</span> Automatically skip Turkey public holidays when TCMB is closed.</p>
+
+                <h2>🚀 Quick Start</h2>
+
+                <ol>
+                    <li><strong>Install</strong> – Install Python dependencies: <code>pip install requests holidays</code></li>
+                    <li><strong>Configure</strong> – Go to Accounting → Configuration → Settings → TCMB Currency Rates</li>
+                    <li><strong>Enable</strong> – Turn on "TCMB Auto" for currencies you want to sync (USD, EUR, etc.)</li>
+                    <li><strong>Update</strong> – Click "Update from TCMB" button or wait for scheduled run</li>
+                    <li><strong>Verify</strong> – Check Run History and Exchange Rates list</li>
+                </ol>
+
+                <div class="alert alert-success">
+                    <strong>💡 Pro Tip:</strong> Use the Import Historical wizard to backfill past rates 
+                    for financial reporting. You can import years of data in minutes!
+                </div>
+
+                <h2>📍 Where to Find</h2>
+
+                <ul>
+                    <li><strong>Main Menu:</strong> Accounting → Configuration → TCMB Rates</li>
+                    <li><strong>Currencies:</strong> Accounting → Configuration → Currencies (button + columns)</li>
+                    <li><strong>Settings:</strong> Accounting → Configuration → Settings → Invoicing</li>
+                    <li><strong>Cron:</strong> Settings → Technical → Automation → Scheduled Actions</li>
+                </ul>
+
+                <h2>🎯 Use Cases</h2>
+
+                <ul>
+                    <li><strong>Multi-currency Invoicing:</strong> Always use official TCMB rates</li>
+                    <li><strong>Financial Reporting:</strong> Historical rate data for comparative analysis</li>
+                    <li><strong>Tax Compliance:</strong> Use rates accepted by Turkish tax authorities</li>
+                    <li><strong>Accounting Automation:</strong> Eliminate manual rate entry errors</li>
+                    <li><strong>Multi-company:</strong> Different rate configurations per company</li>
+                </ul>
+
+                <h2>📚 Documentation</h2>
+
+                <p>Complete user manuals available in the repository:</p>
+                <ul>
+                    <li>User Manual (English) – Detailed text guide</li>
+                    <li>User Manual (Turkish) – Türkçe detaylı kılavuz</li>
+                    <li>Professional PDF Guide – Illustrated manual with graphics and tables</li>
+                </ul>
+
+                <h2>🔧 Technical Details</h2>
+
+                <p><strong>Data Source:</strong> <code>https://www.tcmb.gov.tr/kurlar/today.xml</code></p>
+                <p><strong>Supported Currencies:</strong> All TCMB-published currencies (USD, EUR, GBP, CHF, AUD, etc.)</p>
+                <p><strong>Rate Format:</strong> TCMB format (1 USD = X TRY) automatically converted to Odoo format</p>
+                <p><strong>Storage:</strong> Rates stored in dedicated <code>tcmb.currency.rate</code> model before sync</p>
+
+                <h2>🆘 Support</h2>
+
+                <ul>
+                    <li><strong>Issues:</strong> GitHub Issues for bug reports and feature requests</li>
+                    <li><strong>Documentation:</strong> Comprehensive guides in /docs folder</li>
+                    <li><strong>Source Code:</strong> Open source on GitHub</li>
+                </ul>
+
+                <div class="alert alert-info">
+                    <strong>⚠️ Requirements</strong><br/>
+                    • Odoo 19 Community Edition<br/>
+                    • Python packages: <code>requests</code>, <code>holidays</code><br/>
+                    • Active internet connection for TCMB API access
+                </div>
+
+                <h2>📄 License</h2>
+                <p>LGPL-3.0 – Free and open source</p>
+
+                <hr style="margin: 40px 0; border: none; border-top: 1px solid #ddd;"/>
+
+                <p style="text-align: center; color: #999; font-size: 14px;">
+                    Made with ❤️ for the Odoo community<br/>
+                    <strong>TCMB Currency Rates</strong> – Official Turkish Central Bank Integration
+                </p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
