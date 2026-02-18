@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_tcmb_root"
+              name="TCMB Rates"
+              parent="account.menu_finance_configuration"
+              sequence="100"/>
+
+    <menuitem id="menu_tcmb_currency_rates"
+              name="Exchange Rates"
+              parent="menu_tcmb_root"
+              action="tcmb_currency_rate_action"
+              sequence="10"/>
+
+    <menuitem id="menu_tcmb_update_rates"
+              name="Update from TCMB"
+              parent="menu_tcmb_root"
+              action="action_tcmb_update_rates"
+              sequence="5"/>
+
+    <menuitem id="menu_tcmb_fix_cron"
+              name="Fix cron (log manual runs)"
+              parent="menu_tcmb_root"
+              action="action_tcmb_fix_cron_code"
+              sequence="3"/>
+</odoo>

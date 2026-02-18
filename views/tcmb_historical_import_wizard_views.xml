@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tcmb_historical_import_wizard_form" model="ir.ui.view">
+        <field name="name">tcmb.historical.import.wizard.form</field>
+        <field name="model">tcmb.historical.import.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Import Historical Rates">
+                <group>
+                    <group>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                    <group>
+                        <field name="skip_holidays"/>
+                        <field name="skip_already_imported"/>
+                        <field name="sync_to_odoo"/>
+                    </group>
+                </group>
+                <div class="alert alert-info" role="alert">
+                    <p><strong>Info:</strong></p>
+                    <ul>
+                        <li>TCMB data available from <strong>16 April 1996</strong> onwards</li>
+                        <li>Weekends are automatically skipped</li>
+                        <li>Import may take time for large date ranges</li>
+                        <li>Existing rates will be updated</li>
+                        <li>If <strong>Sync to Odoo currencies</strong> is checked, imported rates are pushed to Accounting (only currencies with TCMB Auto Update)</li>
+                        <li>If <strong>Skip dates already imported</strong> is checked, dates that already have TCMB data are not fetched (saves time and keeps existing data)</li>
+                    </ul>
+                </div>
+                <footer>
+                    <button name="action_import" string="Import" type="object" class="btn-primary"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="tcmb_historical_import_action" model="ir.actions.act_window">
+        <field name="name">Import Historical Rates</field>
+        <field name="res_model">tcmb.historical.import.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_tcmb_historical_import"
+              name="Import Historical"
+              parent="menu_tcmb_root"
+              action="tcmb_historical_import_action"
+              sequence="20"/>
+
+    <!-- Sync a single date to Odoo (for already-imported TCMB rates) -->
+    <record id="tcmb_sync_date_wizard_form" model="ir.ui.view">
+        <field name="name">tcmb.sync.date.wizard.form</field>
+        <field name="model">tcmb.sync.date.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Sync Date to Odoo Currencies">
+                <group>
+                    <field name="rate_date"/>
+                </group>
+                <div class="alert alert-info" role="alert">
+                    <p>Syncs TCMB rates for the selected date to Accounting currencies. Only currencies with <strong>TCMB Auto Update</strong> checked are updated. TCMB data must already be imported for that date (use Import Historical first if needed).</p>
+                </div>
+                <footer>
+                    <button name="action_sync" string="Sync" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="tcmb_sync_date_action" model="ir.actions.act_window">
+        <field name="name">Sync Date to Odoo</field>
+        <field name="res_model">tcmb.sync.date.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_tcmb_sync_date"
+              name="Sync Date to Odoo"
+              parent="menu_tcmb_root"
+              action="tcmb_sync_date_action"
+              sequence="15"/>
+</odoo>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_tcmb_update_rates" model="ir.actions.server">
+        <field name="name">Update from TCMB</field>
+        <field name="model_id" ref="tcmb_currency_rates.model_tcmb_currency_rate"/>
+        <field name="state">code</field>
+        <field name="code">
+log, action = model.run_tcmb_update_and_log(run_type='manual')
+        </field>
+    </record>
+
+    <record id="action_tcmb_fix_cron_code" model="ir.actions.server">
+        <field name="name">Fix cron (log manual runs)</field>
+        <field name="model_id" ref="tcmb_currency_rates.model_tcmb_currency_rate"/>
+        <field name="state">code</field>
+        <field name="code">action = model.action_fix_cron_code_for_logging()</field>
+    </record>
+</odoo>

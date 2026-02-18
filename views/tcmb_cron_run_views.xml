@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="tcmb_cron_run_list" model="ir.ui.view">
+        <field name="name">tcmb.cron.run.list</field>
+        <field name="model">tcmb.cron.run</field>
+        <field name="arch" type="xml">
+            <list string="TCMB Run Log" create="false" edit="false" delete="false">
+                <field name="run_date"/>
+                <field name="run_type"/>
+                <field name="state"/>
+                <field name="created"/>
+                <field name="updated"/>
+                <field name="rate_date"/>
+                <field name="message" optional="hide"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="tcmb_cron_run_form" model="ir.ui.view">
+        <field name="name">tcmb.cron.run.form</field>
+        <field name="model">tcmb.cron.run</field>
+        <field name="arch" type="xml">
+            <form string="TCMB Run" create="false" edit="false" delete="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="run_date"/>
+                            <field name="run_type"/>
+                            <field name="state"/>
+                            <field name="rate_date"/>
+                        </group>
+                        <group>
+                            <field name="created"/>
+                            <field name="updated"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <group invisible="not message">
+                        <field name="message" readonly="1" nolabel="1"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="tcmb_cron_run_action" model="ir.actions.act_window">
+        <field name="name">Run History</field>
+        <field name="res_model">tcmb.cron.run</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                No TCMB runs yet
+            </p>
+            <p>
+                Run <strong>Update from TCMB</strong> (menu or Currencies list) or wait for the scheduled run. Each run is logged here with results in the chatter.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_tcmb_cron_run"
+              name="Run History"
+              parent="menu_tcmb_root"
+              action="tcmb_cron_run_action"
+              sequence="25"/>
+</odoo>

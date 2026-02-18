@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_tcmb_rate_user,tcmb.currency.rate.user,model_tcmb_currency_rate,account.group_account_user,1,0,0,0
+access_tcmb_rate_manager,tcmb.currency.rate.manager,model_tcmb_currency_rate,account.group_account_manager,1,1,1,1
+access_tcmb_historical_import_wizard,tcmb.historical.import.wizard,model_tcmb_historical_import_wizard,account.group_account_manager,1,1,1,1
+access_tcmb_sync_date_wizard,tcmb.sync.date.wizard,model_tcmb_sync_date_wizard,account.group_account_manager,1,1,1,1
+access_tcmb_cron_run_user,tcmb.cron.run.user,model_tcmb_cron_run,account.group_account_user,1,0,0,0
+access_tcmb_cron_run_manager,tcmb.cron.run.manager,model_tcmb_cron_run,account.group_account_manager,1,1,1,1

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_tcmb_inherit" model="ir.ui.view">
+        <field name="name">res.config.settings.tcmb.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@name='main_currency_setting_container']" position="after">
+                <block title="TCMB Currency Rates" name="tcmb_currency_rates_setting_container">
+                    <setting id="tcmb_rate_type" string="TCMB rate for Odoo sync"
+                        help="Which TCMB rate to use when syncing to Odoo currencies (Forex Selling, Forex Buying, Banknote Buying/Selling)">
+                        <field name="tcmb_rate_type" class="o_light_label" widget="radio"/>
+                    </setting>
+                    <setting id="tcmb_retry" string="Retry on error"
+                        help="On failure: retry up to X times, Y minutes apart; show error after all attempts fail">
+                        <div class="content-group">
+                            <div class="row mt8">
+                                <label for="tcmb_retry_count" class="col-lg-3 o_light_label"/>
+                                <field name="tcmb_retry_count" class="oe_inline" placeholder="3"/>
+                                <span class="ms-2">retries</span>
+                            </div>
+                            <div class="row mt8">
+                                <label for="tcmb_retry_delay_minutes" class="col-lg-3 o_light_label"/>
+                                <field name="tcmb_retry_delay_minutes" class="oe_inline" placeholder="5"/>
+                                <span class="ms-2">minutes between</span>
+                            </div>
+                        </div>
+                    </setting>
+                    <setting id="tcmb_skip_holiday" string="Turkey holiday skip"
+                        help="Skip update when today is a Turkey public holiday (TCMB closed)">
+                        <field name="tcmb_skip_on_holiday" class="oe_inline"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

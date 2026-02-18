@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit Currency List View -->
+    <record id="view_currency_tree_inherit" model="ir.ui.view">
+        <field name="name">res.currency.tree.inherit</field>
+        <field name="model">res.currency</field>
+        <field name="inherit_id" ref="base.view_currency_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="inside">
+                <button name="action_update_tcmb_rates" 
+                        string="Update from TCMB" 
+                        type="object" 
+                        icon="fa-refresh"/>
+            </xpath>
+            <xpath expr="//list" position="inside">
+                <field name="tcmb_auto_update" string="TCMB Auto" optional="show" widget="boolean_toggle"/>
+            </xpath>
+            <xpath expr="//list" position="inside">
+                <field name="tcmb_last_update_display" string="Last TCMB Sync" optional="show" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+    <!-- Inherit Currency Form View -->
+    <record id="view_currency_form_inherit" model="ir.ui.view">
+        <field name="name">res.currency.form.inherit</field>
+        <field name="model">res.currency</field>
+        <field name="inherit_id" ref="base.view_currency_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet" position="inside">
+                <group string="TCMB" name="tcmb_group">
+                    <field name="tcmb_auto_update"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
